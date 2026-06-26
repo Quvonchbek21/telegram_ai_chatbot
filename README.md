@@ -1,65 +1,45 @@
 # Uzdaily AI Telegram Bot
 
-Uzdaily.uz saytidan sun'iy intellekt yordamida yangilik qidirib beruvchi Telegram bot.
+A Telegram bot that fetches and summarizes news from [uzdaily.uz](https://uzdaily.uz) using Google Gemini AI.
 
-## Imkoniyatlari
+## Stack
 
-- Uzdaily.uz RSS lentasidan so'nggi yangiliklar
-- Mavzu bo'yicha qidirish: iqtisodiyot, sport, texnologiya va boshqalar
-- Dunyo yangiliklari ham qo'llab-quvvatlanadi
-- Gemini 2.5 Flash model asosida aqlli javoblar
-- LangGraph agent arxitekturasi
+- **aiogram 3** — Telegram Bot framework
+- **LangGraph + LangChain** — AI agent workflow
+- **Google Gemini 2.5 Flash** — language model
+- **httpx + BeautifulSoup** — RSS parsing
 
-## Texnologiyalar
-
-- **aiogram 3** — Telegram Bot API
-- **LangGraph + LangChain** — agent workflow
-- **Google Gemini 2.5 Flash** — AI model
-- **httpx + BeautifulSoup** — web scraping
-- **python-dotenv** — muhit o'zgaruvchilari
-
-## O'rnatish
+## Setup
 
 ```bash
 git clone https://github.com/Quvonchbek21/telegram_ai_chatbot.git
 cd telegram_ai_chatbot
-
-python -m venv venv
-venv\Scripts\activate       # Windows
-# source venv/bin/activate  # Linux/Mac
-
+python -m venv venv && venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Sozlash
-
-`.env.example` faylini `.env` ga nusxalang va tokenlarni kiriting:
-
-```bash
-cp .env.example .env
-```
+Copy `.env.example` to `.env` and fill in your credentials:
 
 ```env
-BOT_TOKEN=your_telegram_bot_token_here
-GEMINI_API_KEY=your_gemini_api_key_here
+BOT_TOKEN=your_telegram_bot_token
+GEMINI_API_KEY=your_gemini_api_key
 ```
 
-- **BOT_TOKEN** — [@BotFather](https://t.me/BotFather) orqali oling
-- **GEMINI_API_KEY** — [Google AI Studio](https://aistudio.google.com) dan oling
+Get your tokens: [BotFather](https://t.me/BotFather) · [Google AI Studio](https://aistudio.google.com)
 
-## Ishga tushirish
+## Run
 
 ```bash
 python main.py
 ```
 
-## Foydalanish
+## Usage
 
-Botga istalgan mavzuni yozing:
+Send any topic to the bot and it will return the latest matching news from uzdaily.uz:
 
 ```
-iqtisodiyot
-dollar kursi
-sport yangiliklari
-dunyoda nima gap?
+economy
+dollar rate
+sports
+world news
 ```
